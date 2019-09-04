@@ -102,7 +102,7 @@ UE.plugins["catchremoteimage"] = function() {
             oldSrc = ci.getAttribute("_src") || ci.src || "";
             oldBgIMG = ci.getAttribute("data-background") || "";
             for (j = 0; cj = list[j++];) {
-              if (oldSrc == cj.source && cj.state == "SUCCESS") {
+              if (oldSrc == cj.source.replace(/&amp;/ig, "&") && cj.state == "SUCCESS") {
                 newSrc = catcherUrlPrefix + cj.url;
                 // 上传成功是删除uploading动画
                 domUtils.removeClasses( ci, "loadingclass" );
